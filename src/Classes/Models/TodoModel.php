@@ -19,9 +19,10 @@ class TodoModel
     }
 
     /**
+     * pullTodoList() pulls the todo list information
      * @return mixed
-     */``
-    public function pullTodoList()
+     */
+    public function pullTodoList() : array
     {
         $query = $this->db->prepare('SELECT `id`, `title`, `description`, `completed`, `deleted` FROM `todoList`;');
         $query->execute();
