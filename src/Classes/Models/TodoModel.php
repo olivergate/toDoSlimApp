@@ -9,7 +9,12 @@
 namespace Classes\Models;
 
 
-class todoModel
+class TodoModel
 {
+    private $db;
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
 
 }
