@@ -3,8 +3,8 @@
 namespace Classes\Controllers;
 
 use Classes\Models\TodoModel;
-use http\Env\Request;
-use http\Env\Response;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 class TodoDisplayController
@@ -20,7 +20,7 @@ class TodoDisplayController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $args[] = $this->todoModel->pullTodoList();
+        $args['data'] = $this->todoModel->pullTodoList();
         $this->renderer->render($response, 'displayTodo.phtml', $args);
     }
 }

@@ -14,7 +14,6 @@ class TodoModel
     private $db;
     public function __construct($db)
     {
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->db = $db;
     }
 
@@ -27,5 +26,17 @@ class TodoModel
         $query = $this->db->prepare('SELECT `id`, `title`, `description`, `completed`, `deleted` FROM `todoList`;');
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function assignCompleted($id) : int
+    {
+        $query  = $this->db->prepare("UPDATE `todoList` SET `completed` = 1 WHERE `id` = '$id';");
+//        $query->bindParams(':id', $id);
+        return $query->execute();
+    }
+
+    public function assignDeleted()
+    {
+        
     }
 }

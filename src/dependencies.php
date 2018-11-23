@@ -18,5 +18,11 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 $container['dbConnection'] = function () {
-    return new PDO('mysql:host=localhost:8080;dbname=todoList', 'root');
+    $db = new PDO('mysql:host=192.168.20.20;dbname=todo', 'root');
+    $db->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+    return $db;
 };
+
+$container['displayControllerFactory'] = new \Classes\Factories\displayTodoControllerFactory();
+$container['todoModel'] = new \Classes\Factories\TodoModelFactory();
+$container['todoCompletedController'] = new \Classes\Factories\TodoCompletedControllerFactory();
