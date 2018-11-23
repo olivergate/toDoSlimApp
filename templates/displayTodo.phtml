@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <?php
+
+    foreach ($data as $item) {
+        echo '<div data-id="$item[]">';
+        echo 'id =' . $item['id'] . '<br>';
+        echo 'title =' . $item['title'] . '<br>';
+        echo 'description =' . $item['description'] . '<br>';
+        echo 'Completed =' . $item['completed'] . '<br><br>';
+        echo '</div>';
+    }
+    ?>
 </body>
 </html>
